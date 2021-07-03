@@ -7,10 +7,14 @@ extends KinematicBody2D
 var hitbox;
 var animationTree;
 var animationState;
-var movespeed = 5;
+var movespeed = 50;
 var velocity = Vector2.ZERO
 var attack = 0;
 var timercount = 0;
+
+var health = 50;
+var iFrames = 0;
+var iFramesM = 60;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,6 +46,9 @@ func _process(delta):
 		else:
 			animationState.travel("Attack1")
 			attack = 1;
+	if iFrames>0:
+		iFrames-=1;
+			
 	if timercount>0:
 		timercount-=1;
 	pass
@@ -53,3 +60,14 @@ func attackStopped(var attackID):
 		timercount = 20
 	attack = 0
 	return
+
+
+func _on_Damage_area_entered(area):
+	var damage = area.get_parent().get_parent().get_parent().getAttack()
+	
+	if iFrames == 0:
+		health-=damage
+		print(health)
+		iFrames = iFramesM
+	
+	pass # Replace with function body.
