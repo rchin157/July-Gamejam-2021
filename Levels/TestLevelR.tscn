@@ -1,8 +1,29 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Entities/FlyEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://shader/test_shader.tres" type="Material" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_priority = -1
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 863.641, 114.796 )
+texture = ExtResource( 3 )
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+process_priority = 1
+layer = 0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
+material = ExtResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="FlyingEnemy" parent="." instance=ExtResource( 1 )]
 position = Vector2( 320.087, 276.657 )
