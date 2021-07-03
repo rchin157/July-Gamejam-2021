@@ -1,21 +1,20 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Entities/FlyEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/TestLevelR.gd" type="Script" id=1]
 [ext_resource path="res://shader/test_shader.tres" type="Material" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://UI/vn_window.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D"]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-process_priority = -1
-
-[node name="Sprite" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 863.641, 114.796 )
-texture = ExtResource( 3 )
+script = ExtResource( 1 )
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 process_priority = 1
 layer = 0
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer2"]
+position = Vector2( 463.19, 316.357 )
+texture = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
 material = ExtResource( 2 )
@@ -25,5 +24,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FlyingEnemy" parent="." instance=ExtResource( 1 )]
-position = Vector2( 320.087, 276.657 )
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_priority = -1
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer"]
+position = Vector2( 53.3937, -168.19 )
+current = true
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
