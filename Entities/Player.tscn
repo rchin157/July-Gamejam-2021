@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Sprites/TestKnight/knight_blue_idle_01.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/TestKnight/knight_blue_idle_04.png" type="Texture" id=2]
@@ -6,8 +6,10 @@
 [ext_resource path="res://Sprites/TestKnight/knight_blue_idle_03.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=5]
 [ext_resource path="res://Sprites/TestKnight/knight_blue_run_05.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/UI/chainsawui.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/TestKnight/knight_blue_run_07.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/TestKnight/knight_blue_attack_06.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/UI/chainsawUiFill.png" type="Texture" id=10]
 [ext_resource path="res://Sprites/TestKnight/knight_blue_run_04.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/TestKnight/knight_blue_run_03.png" type="Texture" id=12]
 [ext_resource path="res://Sprites/TestKnight/knight_blue_run_08.png" type="Texture" id=13]
@@ -44,6 +46,22 @@ animations = [ {
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 14.0206
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 32, 16 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 7 )
+region = Rect2( 32, 0, 32, 16 )
+
+[sub_resource type="SpriteFrames" id=27]
+animations = [ {
+"frames": [ SubResource( 25 ), SubResource( 26 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="CapsuleShape2D" id=12]
 
@@ -378,6 +396,26 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 editor_draw_drag_margin = true
 
+[node name="Control" type="Control" parent="Camera2D"]
+margin_left = -382.0
+margin_top = -200.0
+margin_right = -342.0
+margin_bottom = -160.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthFrame" type="AnimatedSprite" parent="Camera2D/Control"]
+scale = Vector2( 8, 8 )
+frames = SubResource( 27 )
+frame = 1
+playing = true
+
+[node name="HealthFill" type="Sprite" parent="Camera2D/Control"]
+position = Vector2( -7.90112, 0 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 10 )
+
 [node name="SwingBox" type="Area2D" parent="."]
 position = Vector2( 27.186, -1.813 )
 scale = Vector2( 1.249, 1.369 )
@@ -407,6 +445,7 @@ collision_layer = 8
 collision_mask = 0
 
 [node name="HitboxP" type="CollisionShape2D" parent="Damage"]
+position = Vector2( 0, -0.529739 )
 shape = SubResource( 1 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

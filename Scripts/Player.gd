@@ -12,14 +12,21 @@ var velocity = Vector2.ZERO
 var attack = 0;
 var timercount = 0;
 
+var hBarFill;
+var hBarFrame;
+
+var healthM = 50;
 var health = 50;
 var iFrames = 0;
 var iFramesM = 60;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	hBarFill = get_node("Camera2D/Control/HealthFill")
+	hBarFrame = get_node("Camera2D/Control/HealthFrame")
 	animationTree = get_node("AnimationTree")
 	animationState = animationTree.get("parameters/playback")
+	updateHealth();
 	pass # Replace with function body.
 
 
@@ -61,6 +68,10 @@ func attackStopped(var attackID):
 	attack = 0
 	return
 
+func updateHealth():
+	hBarFrame.speed_scale = 4*health/healthM
+	print(-8-(232*(1-health/healthM)))
+	hBarFill.position.x = -240+(232*health/healthM);
 
 func _on_Damage_area_entered(area):
 	var damage = area.get_parent().get_parent().get_parent().getAttack()
@@ -68,6 +79,7 @@ func _on_Damage_area_entered(area):
 	if iFrames == 0:
 		health-=damage
 		print(health)
+		updateHealth();
 		iFrames = iFramesM
 	
 	pass # Replace with function body.
