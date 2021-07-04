@@ -9,5 +9,5 @@ void fragment() {
 	float avg = (bg.r + bg.g + bg.b) /3f;
 	vec3 col = vec3(avg, avg, avg);
 	col *= vec3(0.0f, 0.99f, 0.0f);
-	COLOR = vec4(col, 1f);
+	COLOR = vec4(col, 0.5f);
 }

@@ -1263,7 +1263,7 @@ speed_scale = 5.0
 z_index = -1
 frames = SubResource( 165 )
 animation = "Walk"
-frame = 1
+frame = 5
 speed_scale = 2.0
 playing = true
 

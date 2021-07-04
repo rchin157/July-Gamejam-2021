@@ -68,7 +68,7 @@ func _process(delta):
 	
 	#VN COMPONENT LMAO
 	if Input.is_action_just_pressed("ui_down") and talkable != null and talkable != previousTalkable:
-		vn.startvn(talkable.getText())
+		vn.startvn(talkable.getText(),talkable.getImage())
 		previousTalkable = talkable
 	
 	
@@ -174,6 +174,8 @@ func vnEnded():
 	if previousTalkable != null:
 		tutorial(4)
 		tutorial(9)
+	if talkable != null and not talkable.newDialogue():
+		talkIcon.visible = false;
 	return
 
 func _on_Damage_area_entered(area):
@@ -200,7 +202,7 @@ func tutorial(var point):
 			0: #start
 				canTalk = false
 				vn.canFlip = true;
-				vn.startvn("res://StoryText/tutorial1.tres")
+				vn.startvn("res://StoryText/tutorial1.tres",0)
 			1: #walk
 				vn.canFlip = false;
 			2: # do run
@@ -210,7 +212,8 @@ func tutorial(var point):
 				canTalk = true
 				vn.canFlip = true;
 			4: #attack
-				vn.startvn("res://StoryText/tutorial3.tres")
+				talkable = null
+				vn.startvn("res://StoryText/tutorial3.tres",0)
 				canTalk = false
 				vn.canFlip = false;
 #
@@ -232,11 +235,15 @@ func tutorial(var point):
 
 func _on_Talk_area_entered(area):
 	talkable = area.get_parent()
-	talkIcon.visible = true;
+	if talkable.newDialogue():
+		talkIcon.visible = true;
 	pass # Replace with function body.
 
 
 func _on_Talk_area_exited(area):
+	var check = area.get_parent()
 	talkIcon.visible = false
+	if(check == talkable and canTalk):
+		vn.close()
 	talkable = null;
 	pass # Replace with function body.

@@ -7,6 +7,7 @@ extends AnimatedSprite
 var textRet = 0;
 var tomatoSeed;
 var spawnPoint
+var newDialogue = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,19 +21,24 @@ func _ready():
 #	pass
 
 func getImage():
-	return 1
+	return 2
 
 func getText():
 	var text = "res://StoryText/rockboi"+String(textRet)+".tres"
 	if textRet<2:
 		textRet+=1;
+	else:
+		newDialogue = false;
 	return text
 	
+func newDialogue():
+	return newDialogue
 
 func _on_interactRange_area_exited(area):
 	if textRet == 2:
 		scale.x*=-1;
 		textRet = 3
+		newDialogue = true
 	pass # Replace with function body.
 
 
