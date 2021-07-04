@@ -27,3 +27,16 @@ text = "YOU DIED"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Button" type="Button" parent="."]
+margin_left = 887.352
+margin_top = 536.578
+margin_right = 1004.35
+margin_bottom = 580.578
+text = "MENU"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
