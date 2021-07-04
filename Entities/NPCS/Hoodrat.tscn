@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Sprites/NPCS/rockboi.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/NPCS/rockboi2.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Hoodrat.gd" type="Script" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 38.4113, 42.2623 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 150.884, 39.4561 )
+
+[node name="Hoodrat" type="AnimatedSprite"]
+frames = SubResource( 1 )
+script = ExtResource( 3 )
+
+[node name="interactRange" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactRange"]
+position = Vector2( 0, 0.280617 )
+shape = SubResource( 2 )
+
+[node name="TomatoRange" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TomatoRange"]
+modulate = Color( 0.929412, 0.0509804, 0.0509804, 1 )
+position = Vector2( 0.280624, 0 )
+shape = SubResource( 3 )
+
+[node name="TomatoTown" type="Node2D" parent="."]
+position = Vector2( 0, -15 )
+
+[connection signal="area_exited" from="interactRange" to="." method="_on_interactRange_area_exited"]
+[connection signal="area_exited" from="TomatoRange" to="." method="_on_TomatoRange_area_exited"]

@@ -14,13 +14,17 @@ var velocity = Vector2.ZERO
 var feet;
 var rotateable = true;
 
+var vn
+
+var talkable = null;
+
 var holding = false;
 var attackP = 0;
 var attack = 0;
 var timercount = 0;
 var holdTolerance = 30;
 var holdCount = -1;
-
+export var tutorial = 0;
 var hBarFill;
 var hBarFrame;
 
@@ -38,6 +42,8 @@ func _ready():
 	rotate = get_node("RotationPivot (Sneed)")
 	animationState = animationTree.get("parameters/playback")
 	feet = get_node("RotationPivot (Sneed)/AnimatedSprite/Feet")
+	vn = get_node("VN")
+	vn.setListener(self)
 	updateHealth();
 	pass # Replace with function body.
 
@@ -48,13 +54,18 @@ func _process(delta):
 	input_vector.x = Input.get_action_strength("ui_right")-Input.get_action_strength("ui_left")
 	input_vector = input_vector.normalized();
 	
+	#VN COMPONENT LMAO
+	if Input.is_action_just_pressed("ui_down") and talkable != null:
+		vn.startvn(talkable.getText())
+	
+	
 	if input_vector != Vector2.ZERO:
 		if(rotateable):
 			if(input_vector.x>0):
 				rotate.scale.x = 1;
 			else:
 				rotate.scale.x = -1;
-		if(Input.get_action_strength("ui_down")):
+		if(Input.get_action_strength("ui_focus_next")):
 			feet.play("Sprint")
 			move_and_slide(input_vector*2*movespeed)
 		else:
@@ -132,6 +143,8 @@ func holdingAttack():
 		attackStopped(4)
 		animationState.travel("Idle")
 	
+func vnEnded():
+	return
 
 func _on_Damage_area_entered(area):
 	var damage = area.get_parent().get_parent().get_parent().getAttack()
@@ -144,4 +157,14 @@ func _on_Damage_area_entered(area):
 		updateHealth();
 		iFrames = iFramesM
 	
+	pass # Replace with function body.
+
+
+func _on_Talk_area_entered(area):
+	talkable = area.get_parent()
+	pass # Replace with function body.
+
+
+func _on_Talk_area_exited(area):
+	talkable = null;
 	pass # Replace with function body.

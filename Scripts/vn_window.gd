@@ -5,6 +5,7 @@ var text = []
 var currentIndex = 0
 var label
 
+var listener
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,6 +17,9 @@ func _ready():
 #func _process(delta):
 #	pass
 
+func setListener(var l):
+	listener = l;
+	
 
 func startvn(filename):
 	var f = File.new()
@@ -31,6 +35,7 @@ func _on_Button_pressed():
 	currentIndex += 1
 	if currentIndex == len(text) - 1:
 		text.clear()
+		listener.vnEnded();
 		currentIndex = 0
 		hide()
 	else:

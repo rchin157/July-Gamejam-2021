@@ -2,17 +2,16 @@
 
 [ext_resource path="res://Sprites/Enemies/TOMAT.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Entities/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/NPCS/Hoodrat.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
 
+[node name="Hoodrat" parent="." instance=ExtResource( 3 )]
+position = Vector2( 339.758, -26.2378 )
+scale = Vector2( 1.96123, 2.04961 )
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -10.916, 0.683609 )
-
-[node name="Handsy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 337.927, -49.7105 )
-scale = Vector2( 0.2, 0.2 )
-z_index = 1
 
 [node name="TOMAT" type="Sprite" parent="."]
 position = Vector2( -4.827, -114.997 )
