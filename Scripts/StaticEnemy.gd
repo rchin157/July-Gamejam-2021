@@ -83,6 +83,8 @@ func _process(delta):
 					#animator.scale.x = -0.25
 #		else:
 #			currentAnimation = "Idle"
+	else:
+		die()
 	updateCDs();
 
 
@@ -149,6 +151,10 @@ func _on_bodyArea_area_entered(area):
 	print("ouch")
 	print(area.name)
 	#takeDamage(area.get_parent().getAttack())
-	staggerCounter -= 1
-	if staggerCounter <= 0:
-		staggered = true
+#	staggerCounter -= 1
+#	if staggerCounter <= 0:
+#		staggered = true
+
+
+func die():
+	queue_free()

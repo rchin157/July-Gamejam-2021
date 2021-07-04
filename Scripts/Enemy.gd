@@ -78,6 +78,8 @@ func _process(delta):
 					animator.scale.x = -0.25
 		else:
 			currentAnimation = "Idle"
+	else:
+		die()
 	updateCDs();
 
 func updateCDs():
@@ -128,9 +130,10 @@ func takeDamage(dmg):
 
 
 func _on_AnimatedSprite_animation_finished():
-	if not alive:
-		#player.addSoul(getSoulReturn())
-		queue_free()
+	pass
+#	if not alive:
+#		#player.addSoul(getSoulReturn())
+#		queue_free()
 
 func getAttack():
 	return attack;
@@ -139,6 +142,10 @@ func _on_bodyArea_area_entered(area):
 	print("ouch")
 	print(area.name)
 	#takeDamage(area.get_parent().getAttack())
-	staggerCounter -= 1
-	if staggerCounter <= 0:
-		staggered = true
+#	staggerCounter -= 1
+#	if staggerCounter <= 0:
+#		staggered = true
+
+
+func die():
+	queue_free()
