@@ -4,7 +4,10 @@ extends "StaticEnemy.gd"
 var heightChange = 0
 var tracker = 0
 var bobspeedModifier = 1
-var bobAmplitudeModifier = 20
+var bobAmplitudeModifier = 10
+
+var swoopDepth = 100
+var swooptracker = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,6 +21,19 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	heightChange = cos(tracker)
-	move_and_slide(Vector2(0, heightChange * bobAmplitudeModifier))
-	tracker += delta / bobspeedModifier
+	if not attacking:
+		heightChange = cos(tracker)
+		move_and_slide(Vector2(0, heightChange * bobAmplitudeModifier))
+		tracker += delta / bobspeedModifier
+
+func attack(delta):
+	if swooptracker > PI:
+		attackEnded()
+		swooptracker = 0
+	else:
+		var newVect = Vector2((swooptracker * attdirection) * speed * 10, cos(swooptracker) * swoopDepth)
+		#print(swooptracker)
+		#(swooptracker * direction) * speed
+		#cos(swooptracker) * swoopDepth
+		move_and_slide(newVect)
+		swooptracker += delta * 3

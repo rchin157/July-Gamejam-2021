@@ -14,6 +14,7 @@ var targetable = false
 var alive = true
 var speed = 20
 var attacking = false;
+var attdirection
 
 #var currentAnimation
 #var previousAnimation
@@ -24,7 +25,7 @@ var staggered = false
 var hitsToStagger = 2
 var staggerCounter = hitsToStagger
 
-var attackCDM = 60;
+var attackCDM = 600;
 var attackCD = 0;
 
 var iFrames = 0;
@@ -56,14 +57,6 @@ func _process(delta):
 		if health <= 0:
 		#	currentAnimation = "die"
 			alive = false
-		elif staggered:
-#			currentAnimation = "staggered"
-			if remainingStaggerTime <= 0:
-				staggered = false
-				remainingStaggerTime = staggerTime
-				staggerCounter = hitsToStagger
-			else:
-				remainingStaggerTime -= delta
 		elif aggro:
 			if targetable and not attacking and attackCD == 0:
 #				if(animator.scale.x>0):
@@ -71,20 +64,31 @@ func _process(delta):
 #				else:
 #					currentAnimation = "AttackR"
 				attacking = true;
+				if player.get_position().x < get_position().x:
+					attdirection = -1
+				else:
+					attdirection = 1
 #				animationState.travel(currentAnimation)
 #				previousAnimation = currentAnimation
 				#rely on animation callback for "hitting"
+			elif attacking:
+				attack(delta)
 			else:
 #				currentAnimation = "Aggro"
 				if player.get_position().x < get_position().x:
 					move_and_slide(Vector2.LEFT * speed)
-					animator.scale.x = 0.25
+					#animator.scale.x = 0.25
 				else:
 					move_and_slide(Vector2.RIGHT * speed)
-					animator.scale.x = -0.25
+					#animator.scale.x = -0.25
 #		else:
 #			currentAnimation = "Idle"
 	updateCDs();
+
+
+func attack(delta):
+	pass
+
 
 func updateCDs():
 	if(iFrames>0):

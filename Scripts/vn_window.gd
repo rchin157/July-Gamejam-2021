@@ -30,6 +30,7 @@ func startvn(filename):
 func _on_Button_pressed():
 	currentIndex += 1
 	if currentIndex == len(text) - 1:
+		text.clear()
 		hide()
 	else:
 		label.text = text[currentIndex]
