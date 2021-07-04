@@ -24,11 +24,17 @@ var attackCD = 0;
 var iFrames = 0;
 var iFramesM = 6;
 
-var health = 100
+var mhealth = 100
+var health = mhealth
 var attack = 20
 var soulReturn = 100
 var animationTree;
 var animationState
+
+var maxhbwitdh = 200
+var healthbarwidth = 200
+var healthbar
+var hidden = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,6 +45,8 @@ func _ready():
 	currentAnimation = "Idle"
 	previousAnimation = "none"
 	#animator.get_animation()
+	healthbar = get_node("TextureProgress")
+	healthbar.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -139,12 +147,16 @@ func getAttack():
 	return attack;
 
 func _on_bodyArea_area_entered(area):
+	if hidden:
+		hidden = false
+		healthbar.show()
 	print("ouch")
-	print(area.name)
+	print(area.get_parent().get_parent().name)
 	#takeDamage(area.get_parent().getAttack())
 #	staggerCounter -= 1
 #	if staggerCounter <= 0:
 #		staggered = true
+	healthbar.value = int((float(health) / float(mhealth)) * 100)
 
 
 func die():
