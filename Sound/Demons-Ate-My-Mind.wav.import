@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Demons-Ate-My-Mind.wav-e8bd7b2c6f7832360d9e2c22ec8d96e8.sample"
+
+[deps]
+
+source_file="res://Sound/Demons-Ate-My-Mind.wav"
+dest_files=[ "res://.import/Demons-Ate-My-Mind.wav-e8bd7b2c6f7832360d9e2c22ec8d96e8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

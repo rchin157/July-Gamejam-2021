@@ -18,10 +18,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
 	if animator.get_frame() == 7:
 		button.show()
-		
 
 
 func _on_Button_pressed():

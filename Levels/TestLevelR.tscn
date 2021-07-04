@@ -22,7 +22,7 @@ scale = Vector2( 0.560022, 0.560022 )
 centered = false
 
 [node name="FlyingEnemy" parent="." instance=ExtResource( 5 )]
-position = Vector2( 442.398, 193.762 )
+position = Vector2( 263.022, 281.069 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -9.29175, 386.586 )

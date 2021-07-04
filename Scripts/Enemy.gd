@@ -152,7 +152,7 @@ func _on_bodyArea_area_entered(area):
 		healthbar.show()
 	print("ouch")
 	print(area.get_parent().get_parent().name)
-	#takeDamage(area.get_parent().getAttack())
+	takeDamage(area.get_parent().get_parent().getAttack())
 #	staggerCounter -= 1
 #	if staggerCounter <= 0:
 #		staggered = true

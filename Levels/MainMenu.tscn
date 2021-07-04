@@ -85,6 +85,7 @@ __meta__ = {
 }
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 526.647, 302.381 )
 stream = ExtResource( 7 )
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
