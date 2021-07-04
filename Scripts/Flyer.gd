@@ -31,7 +31,7 @@ func attack(delta):
 		attackEnded()
 		swooptracker = 0
 	else:
-		var newVect = Vector2((swooptracker * attdirection) * speed * 10, cos(swooptracker) * swoopDepth)
+		var newVect = Vector2((swooptracker * attdirection) * speed * 7, cos(swooptracker) * swoopDepth)
 		#print(swooptracker)
 		#(swooptracker * direction) * speed
 		#cos(swooptracker) * swoopDepth
