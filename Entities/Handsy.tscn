@@ -20,7 +20,7 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
-"name": "walk",
+"name": "attack1",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -30,7 +30,7 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
-"name": "attack1",
+"name": "walk",
 "speed": 5.0
 } ]
 
