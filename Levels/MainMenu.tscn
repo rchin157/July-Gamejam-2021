@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://font/Poco.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://shader/blur_material.tres" type="Material" id=2]
+[ext_resource path="res://Sprites/level/foregroundfoliage.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/level/backgroundfoliage.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/mainmenuslide.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 66
+outline_size = 4
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="bg" type="ColorRect" parent="."]
+margin_left = -357.818
+margin_top = -260.804
+margin_right = 1382.18
+margin_bottom = 744.196
+color = Color( 0.898039, 0.898039, 0.898039, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TreesFar" type="Sprite" parent="."]
+position = Vector2( 495.589, 213.038 )
+scale = Vector2( 0.727126, 0.727126 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+slidespeed = 1.0
+slideAmplitudeModifier = 30.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = ExtResource( 2 )
+margin_left = -634.722
+margin_top = -437.301
+margin_right = 2068.28
+margin_bottom = 1199.7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TreesClose" type="Sprite" parent="."]
+position = Vector2( 495.866, 220.731 )
+scale = Vector2( 0.714538, 0.714538 )
+texture = ExtResource( 3 )
+script = ExtResource( 5 )
+slidespeed = 1.0
+slideAmplitudeModifier = 80.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = 25.3674
+margin_top = 17.0416
+margin_right = 474.367
+margin_bottom = 97.0416
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Cool Game Title"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 41.1005
+margin_top = 103.302
+margin_right = 170.1
+margin_bottom = 149.302
+custom_fonts/font = SubResource( 2 )
+shortcut_in_tooltip = false
+text = "Start"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
