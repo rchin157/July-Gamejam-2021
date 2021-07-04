@@ -12,7 +12,10 @@ position = Vector2( -10.916, 0.683609 )
 [node name="Handsy" parent="." instance=ExtResource( 3 )]
 position = Vector2( 337.927, -49.7105 )
 scale = Vector2( 0.2, 0.2 )
+z_index = 1
 
-[node name="TOMAT" type="Sprite" parent="Handsy"]
-position = Vector2( -1713.77, -326.434 )
+[node name="TOMAT" type="Sprite" parent="."]
+position = Vector2( -4.827, -114.997 )
+scale = Vector2( 0.2, 0.2 )
+z_index = 1
 texture = ExtResource( 1 )

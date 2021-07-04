@@ -25,12 +25,12 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
-"name": "stagger",
+"name": "attack1",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "attack1",
+"name": "stagger",
 "speed": 5.0
 } ]
 

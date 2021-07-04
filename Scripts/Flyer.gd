@@ -1,4 +1,4 @@
-extends "Enemy.gd"
+extends "StaticEnemy.gd"
 
 
 var heightChange = 0
