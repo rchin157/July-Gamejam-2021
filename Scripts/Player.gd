@@ -16,7 +16,17 @@ var rotateable = true;
 
 var vn
 
+var canTalk = true;
 var talkable = null;
+var previousTalkable = null;
+var talkIcon;
+
+var attackD = 10
+var uAttackD = 10
+var dAttackD = 15
+var sAttackD = 20
+var hAttackD = 5
+var oAttackD = 10
 
 var holding = false;
 var attackP = 0;
@@ -24,7 +34,7 @@ var attack = 0;
 var timercount = 0;
 var holdTolerance = 30;
 var holdCount = -1;
-export var tutorial = 0;
+export var tutorial = -1;
 var hBarFill;
 var hBarFrame;
 
@@ -39,12 +49,14 @@ func _ready():
 	hBarFrame = get_node("Camera2D/Control/HealthFrame")
 	animationPlayer= get_node("AnimationPlayer")
 	animationTree = get_node("AnimationTree")
+	talkIcon = get_node("interact")
 	rotate = get_node("RotationPivot (Sneed)")
 	animationState = animationTree.get("parameters/playback")
 	feet = get_node("RotationPivot (Sneed)/AnimatedSprite/Feet")
 	vn = get_node("VN")
 	vn.setListener(self)
 	updateHealth();
+	tutorial(0);
 	pass # Replace with function body.
 
 
@@ -55,8 +67,9 @@ func _process(delta):
 	input_vector = input_vector.normalized();
 	
 	#VN COMPONENT LMAO
-	if Input.is_action_just_pressed("ui_down") and talkable != null:
+	if Input.is_action_just_pressed("ui_down") and talkable != null and talkable != previousTalkable:
 		vn.startvn(talkable.getText())
+		previousTalkable = talkable
 	
 	
 	if input_vector != Vector2.ZERO:
@@ -67,8 +80,10 @@ func _process(delta):
 				rotate.scale.x = -1;
 		if(Input.get_action_strength("ui_focus_next")):
 			feet.play("Sprint")
+			tutorial(3)
 			move_and_slide(input_vector*2*movespeed)
 		else:
+			tutorial(2)
 			feet.play("Walk")
 			move_and_slide(input_vector*movespeed)
 	else:
@@ -93,6 +108,8 @@ func checkAttack():
 		if holdCount >=holdTolerance and attack == 0:
 			attack = 4;
 			animationState.travel("HoldAttack")
+			tutorial(7)
+			attackD = hAttackD
 			rotateable = false;
 	
 	if Input.is_action_just_released("ui_select"):
@@ -101,21 +118,31 @@ func checkAttack():
 			if( Input.get_action_strength("ui_up")):
 				animationState.travel("AttackOverhead")
 				attack = 4;
+				attackD = oAttackD
+				tutorial(8)
 			else:
 				if(timercount>0):
 					if(attackP == 1):
 						animationState.travel("AttackDown")
+						attackD = dAttackD
 						attack = 2;
 					else:
 						animationState.travel("AttackStab")
+						attackD = sAttackD
 						attack = 3;
+						tutorial(6)
 				else:
+					tutorial(5)
 					animationState.travel("AttackUp")
+					attackD = sAttackD
 					attack = 1;
 		holdCount = -1;
 			
 func nowRotate():
 	rotateable = true;
+
+func getAttack():
+	return attackD
 
 func die():
 	#Game over goes here
@@ -144,6 +171,9 @@ func holdingAttack():
 		animationState.travel("Idle")
 	
 func vnEnded():
+	if previousTalkable != null:
+		tutorial(4)
+		tutorial(9)
 	return
 
 func _on_Damage_area_entered(area):
@@ -159,12 +189,54 @@ func _on_Damage_area_entered(area):
 	
 	pass # Replace with function body.
 
+func pageFlipped(var page):
+	if page == 3:
+		tutorial(1)
+
+func tutorial(var point):
+	if point-tutorial == 1:
+		print(point)
+		match point:
+			0: #start
+				canTalk = false
+				vn.canFlip = true;
+				vn.startvn("res://StoryText/tutorial1.tres")
+			1: #walk
+				vn.canFlip = false;
+			2: # do run
+				vn.advancePage()
+			3: #do talk
+				vn.advancePage()
+				canTalk = true
+				vn.canFlip = true;
+			4: #attack
+				vn.startvn("res://StoryText/tutorial3.tres")
+				canTalk = false
+				vn.canFlip = false;
+#
+			5: #combo
+				vn.advancePage()
+#
+			6: #hold
+				vn.advancePage()
+			7: #overhead
+				vn.advancePage()
+			8: #finale
+				vn.advancePage()
+				vn.canFlip = true;
+			9: #canLeave
+				canTalk = true;
+		tutorial+=1
+			
+
 
 func _on_Talk_area_entered(area):
 	talkable = area.get_parent()
+	talkIcon.visible = true;
 	pass # Replace with function body.
 
 
 func _on_Talk_area_exited(area):
+	talkIcon.visible = false
 	talkable = null;
 	pass # Replace with function body.

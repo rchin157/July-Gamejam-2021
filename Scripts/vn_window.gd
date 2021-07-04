@@ -5,6 +5,8 @@ var text = []
 var currentIndex = 0
 var label
 
+var canFlip = true;
+
 var listener
 
 # Called when the node enters the scene tree for the first time.
@@ -22,6 +24,9 @@ func setListener(var l):
 	
 
 func startvn(filename):
+	if text.size()>0:
+		currentIndex = 0;
+		text = []
 	var f = File.new()
 	f.open(filename, File.READ)
 	while not f.eof_reached():
@@ -29,14 +34,18 @@ func startvn(filename):
 	f.close()
 	label.text = text[currentIndex]
 	show()
-
-
-func _on_Button_pressed():
+	
+func advancePage():
+	listener.pageFlipped(currentIndex)
 	currentIndex += 1
 	if currentIndex == len(text) - 1:
 		text.clear()
-		listener.vnEnded();
 		currentIndex = 0
 		hide()
+		listener.vnEnded();
 	else:
 		label.text = text[currentIndex]
+
+func _on_Button_pressed():
+	if canFlip:
+		advancePage()
