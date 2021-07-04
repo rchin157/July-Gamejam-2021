@@ -31,6 +31,7 @@ func _on_Button_pressed():
 	currentIndex += 1
 	if currentIndex == len(text) - 1:
 		text.clear()
+		currentIndex = 0
 		hide()
 	else:
 		label.text = text[currentIndex]
