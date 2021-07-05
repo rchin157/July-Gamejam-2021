@@ -1,0 +1,46 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Sound/Sfx/Combo B.wav" type="AudioStream" id=1]
+[ext_resource path="res://Sound/Music/Chainsaw Motor.wav" type="AudioStream" id=2]
+[ext_resource path="res://Sound/Sfx/Hold Attack.wav" type="AudioStream" id=3]
+[ext_resource path="res://Sound/Music/Boss in Demonland.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sound/Sfx/Combo A.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sound/Music/Demon Fight.wav" type="AudioStream" id=6]
+[ext_resource path="res://Sound/Sfx/Upswing.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sound/Sfx/Combo C.wav" type="AudioStream" id=8]
+[ext_resource path="res://Scripts/Sfx.gd" type="Script" id=9]
+
+[node name="Node" type="Node"]
+script = ExtResource( 9 )
+
+[node name="Boss in Demonland" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -10.0
+
+[node name="ChainsawMotor" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -10.0
+
+[node name="Demon Fight" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -10.0
+
+[node name="ComboA" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -15.0
+
+[node name="ComboB" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -15.0
+
+[node name="ComboC" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -15.0
+
+[node name="HoldAttack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -15.0
+
+[node name="Upswing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -15.0

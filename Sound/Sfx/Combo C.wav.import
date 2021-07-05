@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Combo C.wav-4272096305032a6dd6fcd9192c6fd4d7.sample"
+
+[deps]
+
+source_file="res://Sound/Sfx/Combo C.wav"
+dest_files=[ "res://.import/Combo C.wav-4272096305032a6dd6fcd9192c6fd4d7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

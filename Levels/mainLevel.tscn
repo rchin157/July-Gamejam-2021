@@ -1,12 +1,15 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Sprites/level/mainlevelbg.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/level/mainlevelfg.png" type="Texture" id=2]
 [ext_resource path="res://Entities/Trees/birch.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Entities/Trees/cone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Entities/sneedshack.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Entities/Trees/fattop.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Entities/Trees/oak.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/NPCS/TreeChop.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Entities/NPCS/Hoodrat.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Entities/FlyEnemy.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Entities/Hand.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Entities/NPCS/Treeboi.tscn" type="PackedScene" id=15]
 
 [node name="Node2D" type="Node2D"]
 
@@ -25,7 +28,6 @@ centered = false
 layer = 100
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxForeground"]
-visible = false
 motion_scale = Vector2( 1.5, 1 )
 motion_mirroring = Vector2( 3000, 0 )
 
@@ -34,49 +36,93 @@ position = Vector2( -5.34546, -260.142 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -128
-follow_viewport_enable = true
+[node name="shack" parent="." instance=ExtResource( 5 )]
+position = Vector2( 12898.3, 305.423 )
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-margin_left = -177.649
-margin_top = -93.2341
-margin_right = 1196.35
-margin_bottom = 737.766
-color = Color( 0.898039, 0.898039, 0.898039, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Newby" parent="." instance=ExtResource( 9 )]
+position = Vector2( 2296.62, 493.107 )
+scale = Vector2( 3.47157, 3.44529 )
+
+[node name="Hoodrat" parent="." instance=ExtResource( 10 )]
+position = Vector2( 4342, 502.407 )
+scale = Vector2( 2.99856, 3.10368 )
+
+[node name="Handsy2" parent="." instance=ExtResource( 13 )]
+position = Vector2( 7080.2, 503.979 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Handsy3" parent="." instance=ExtResource( 13 )]
+position = Vector2( 10714.9, 468.037 )
+scale = Vector2( 0.75, 0.75 )
+
+[node name="Handsy" parent="." instance=ExtResource( 13 )]
+position = Vector2( 6710.86, 495.57 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="tree9" parent="." instance=ExtResource( 15 )]
+position = Vector2( 7922.97, 106.973 )
+scale = Vector2( 2, 2 )
+
+[node name="tree3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 3141.76, 345.951 )
+scale = Vector2( 2, 2 )
+
+[node name="tree4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 3489.89, 349.314 )
+scale = Vector2( 2, 2 )
+
+[node name="tree5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 5067.41, 345.951 )
+scale = Vector2( 2, 2 )
+
+[node name="tree6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 5649.31, 367.814 )
+scale = Vector2( 2, 2 )
+
+[node name="tree7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 7469.01, 349.314 )
+scale = Vector2( 2, 2 )
+
+[node name="tree8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 11686.9, 359.405 )
+scale = Vector2( 2, 2 )
+
+[node name="tree10" parent="." instance=ExtResource( 3 )]
+position = Vector2( 12144.4, 359.405 )
+scale = Vector2( 2, 2 )
+
+[node name="FlyingEnemy3" parent="." instance=ExtResource( 11 )]
+position = Vector2( 9788.63, 377.579 )
+scale = Vector2( 2, 2 )
+
+[node name="FlyingEnemy4" parent="." instance=ExtResource( 11 )]
+position = Vector2( 10242.6, 295.555 )
+scale = Vector2( 2, 2 )
+
+[node name="FlyingEnemy5" parent="." instance=ExtResource( 11 )]
+position = Vector2( 9440.73, 261.614 )
+scale = Vector2( 2, 2 )
+
+[node name="FlyingEnemy" parent="." instance=ExtResource( 11 )]
+position = Vector2( 9519.25, 407.002 )
+scale = Vector2( 2, 2 )
+
+[node name="FlyingEnemy2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 10014.8, 419.73 )
+scale = Vector2( 2, 2 )
+
+[node name="tree12" parent="." instance=ExtResource( 3 )]
+position = Vector2( 8644.21, 356.06 )
+scale = Vector2( 2, 2 )
+
+[node name="tree11" parent="." instance=ExtResource( 3 )]
+position = Vector2( 9093.71, 359.057 )
+scale = Vector2( 2, 2 )
 
 [node name="tree" parent="." instance=ExtResource( 3 )]
-position = Vector2( 853.873, 471.994 )
+position = Vector2( 1276.19, 345.727 )
+scale = Vector2( 2, 2 )
 
-[node name="tree" parent="tree" instance=ExtResource( 4 )]
-position = Vector2( 330, 8 )
-
-[node name="tree2" parent="tree" instance=ExtResource( 3 )]
-position = Vector2( 370, 12 )
-
-[node name="tree3" parent="tree" instance=ExtResource( 4 )]
-position = Vector2( 414, 10 )
-
-[node name="tree6" parent="tree" instance=ExtResource( 7 )]
-position = Vector2( 816, 10 )
-
-[node name="tree7" parent="tree" instance=ExtResource( 6 )]
-position = Vector2( 942, 12 )
-
-[node name="tree8" parent="tree" instance=ExtResource( 4 )]
-position = Vector2( 1042, 10 )
-
-[node name="tree10" parent="tree" instance=ExtResource( 4 )]
-position = Vector2( 1184, 18 )
-
-[node name="tree4" parent="tree" instance=ExtResource( 3 )]
-position = Vector2( 1710, 10 )
-
-[node name="shack" parent="tree" instance=ExtResource( 5 )]
-position = Vector2( 3540.26, -286.398 )
-
-[node name="tree2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 2309.87, 483.994 )
+[node name="Player" parent="." instance=ExtResource( 8 )]
+position = Vector2( 116.671, 507.68 )
+tutorial = -2

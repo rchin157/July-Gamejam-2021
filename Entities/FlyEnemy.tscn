@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Flyer.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Enemies/TOMAT.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/UI/healthbar.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -26,16 +26,17 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
-"name": "stagger",
+"name": "walk",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "walk",
+"name": "stagger",
 "speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=6]
+radius = 19.5025
 
 [node name="FlyingEnemy" type="KinematicBody2D"]
 collision_layer = 0
@@ -82,7 +83,7 @@ collision_mask = 4
 shape = SubResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.5, 1 )
+scale = Vector2( 0.0816737, 0.0965225 )
 texture = ExtResource( 2 )
 
 [node name="TextureProgress" type="TextureProgress" parent="."]

@@ -17,4 +17,6 @@ func _ready():
 
 
 func _on_Area2D_body_entered(body):
+	Sound.stopSong(1)
+	Sound.stopSong(2)
 	get_tree().change_scene("res://Levels/win.tscn")

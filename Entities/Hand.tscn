@@ -19,19 +19,19 @@ animations = [ {
 "name": "attack1",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "stagger",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "stagger",
+"speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 77.4775
+radius = 81.8515
 height = 282.659
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -52,7 +52,7 @@ height = 376.041
 length = 0.4
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Rotation Axis/AnimatedSprite:animation")
+tracks/0/path = NodePath("../Handsy/Rotation Axis/AnimatedSprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -64,7 +64,7 @@ tracks/0/keys = {
 "values": [ "walk" ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Rotation Axis/AnimatedSprite:frame")
+tracks/1/path = NodePath("../Handsy/Rotation Axis/AnimatedSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -76,7 +76,7 @@ tracks/1/keys = {
 "values": [ 0, 3 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Rotation Axis/AnimatedSprite:position")
+tracks/2/path = NodePath("../Handsy/Rotation Axis/AnimatedSprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -91,7 +91,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=9]
 length = 1.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Rotation Axis/AnimatedSprite:frame")
+tracks/0/path = NodePath("../Handsy/Rotation Axis/AnimatedSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -103,7 +103,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Rotation Axis/AnimatedSprite:animation")
+tracks/1/path = NodePath("../Handsy/Rotation Axis/AnimatedSprite:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -115,7 +115,7 @@ tracks/1/keys = {
 "values": [ "stagger" ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Rotation Axis:rotation_degrees")
+tracks/2/path = NodePath("../Handsy/Rotation Axis:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -127,7 +127,7 @@ tracks/2/keys = {
 "values": [ 0.0, -70.4, 0.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Rotation Axis/AnimatedSprite:position")
+tracks/3/path = NodePath("../Handsy/Rotation Axis/AnimatedSprite:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -153,7 +153,7 @@ tracks/4/keys = {
 } ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Rotation Axis/AnimatedSprite/hitzone:monitorable")
+tracks/5/path = NodePath("../Handsy/Rotation Axis/AnimatedSprite/hitzone:monitorable")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -169,7 +169,7 @@ tracks/5/keys = {
 resource_name = "AttackR"
 length = 1.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Rotation Axis/AnimatedSprite:frame")
+tracks/0/path = NodePath("../Handsy/Rotation Axis/AnimatedSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -181,7 +181,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Rotation Axis/AnimatedSprite:animation")
+tracks/1/path = NodePath("../Handsy/Rotation Axis/AnimatedSprite:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -193,7 +193,7 @@ tracks/1/keys = {
 "values": [ "stagger" ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Rotation Axis:rotation_degrees")
+tracks/2/path = NodePath("../Handsy/Rotation Axis:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -205,7 +205,7 @@ tracks/2/keys = {
 "values": [ 0.0, 70.4, 0.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Rotation Axis/AnimatedSprite:position")
+tracks/3/path = NodePath("../Handsy/Rotation Axis/AnimatedSprite:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -231,7 +231,7 @@ tracks/4/keys = {
 } ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Rotation Axis/AnimatedSprite/hitzone:monitorable")
+tracks/5/path = NodePath("../Handsy/Rotation Axis/AnimatedSprite/hitzone:monitorable")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -245,7 +245,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id=11]
 tracks/0/type = "value"
-tracks/0/path = NodePath("Rotation Axis/AnimatedSprite:animation")
+tracks/0/path = NodePath("../Handsy/Rotation Axis/AnimatedSprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -257,7 +257,7 @@ tracks/0/keys = {
 "values": [ "idle" ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Rotation Axis/AnimatedSprite:frame")
+tracks/1/path = NodePath("../Handsy/Rotation Axis/AnimatedSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -269,7 +269,7 @@ tracks/1/keys = {
 "values": [ 0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Rotation Axis/AnimatedSprite:position")
+tracks/2/path = NodePath("../Handsy/Rotation Axis/AnimatedSprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -332,7 +332,7 @@ position = Vector2( 30, 200 )
 position = Vector2( -48.7024, -225.797 )
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 1 )
-animation = "idle"
+animation = "stagger"
 
 [node name="hitzone" type="Area2D" parent="Rotation Axis/AnimatedSprite"]
 position = Vector2( -725.19, 823.186 )
@@ -343,10 +343,11 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rotation Axis/AnimatedSprite/hitzone"]
-rotation = -1.6057
+position = Vector2( 192.822, -190.703 )
 shape = SubResource( 2 )
 
 [node name="aggroTrigger" type="Area2D" parent="Rotation Axis/AnimatedSprite"]
+visible = false
 position = Vector2( 74.8096, 103.186 )
 scale = Vector2( 4, 4 )
 collision_layer = 0
@@ -354,7 +355,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rotation Axis/AnimatedSprite/aggroTrigger"]
 modulate = Color( 1, 0, 0, 1 )
-position = Vector2( -459.877, 24.2309 )
+position = Vector2( -455.639, 32.7066 )
 scale = Vector2( 7, 7 )
 shape = SubResource( 3 )
 
@@ -371,6 +372,7 @@ scale = Vector2( 10, 10 )
 shape = SubResource( 4 )
 
 [node name="attackRange" type="Area2D" parent="Rotation Axis/AnimatedSprite"]
+visible = false
 position = Vector2( 74.8096, 103.186 )
 scale = Vector2( 4, 4 )
 collision_layer = 0

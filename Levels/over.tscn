@@ -32,10 +32,10 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="."]
-margin_left = 887.352
-margin_top = 536.578
-margin_right = 1004.35
-margin_bottom = 580.578
+margin_left = 800.0
+margin_top = 447.0
+margin_right = 1004.0
+margin_bottom = 581.0
 text = "MENU"
 flat = true
 __meta__ = {

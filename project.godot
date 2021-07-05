@@ -10,8 +10,13 @@ config_version=4
 
 [application]
 
-config/name="July-Gamejam-2021"
+config/name="Yornce"
+run/main_scene="res://Levels/MainMenu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Sound="*res://Levels/Sfx.tscn"
 
 [physics]
 

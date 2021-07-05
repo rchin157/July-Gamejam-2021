@@ -20,10 +20,10 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 83.9304
-margin_top = 219.683
-margin_right = 311.931
-margin_bottom = 533.683
+margin_left = 128.497
+margin_top = 223.178
+margin_right = 282.497
+margin_bottom = 376.178
 texture = ExtResource( 1 )
 expand = true
 __meta__ = {
@@ -31,10 +31,10 @@ __meta__ = {
 }
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-margin_left = 715.406
-margin_top = 221.348
-margin_right = 943.406
-margin_bottom = 535.348
+margin_left = 757.632
+margin_top = 223.119
+margin_right = 918.632
+margin_bottom = 378.119
 texture = ExtResource( 4 )
 expand = true
 __meta__ = {
@@ -42,23 +42,23 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 58.5736
-margin_top = 434.678
-margin_right = 958.574
-margin_bottom = 584.678
+margin_left = 68.0123
+margin_top = 65.6221
+margin_right = 968.013
+margin_bottom = 215.622
 color = Color( 0.223529, 0.223529, 0.223529, 0.866667 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextEdit" type="Label" parent="."]
-margin_left = 87.5781
-margin_top = 437.673
-margin_right = 937.578
-margin_bottom = 567.673
+margin_left = 90.4098
+margin_top = 61.0661
+margin_right = 940.41
+margin_bottom = 191.066
 size_flags_stretch_ratio = 0.0
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et nisi ante. Phasellus id tincidunt nulla, consectetur dapibus nibh. Aliquam. "
 autowrap = true
 __meta__ = {

@@ -8,6 +8,7 @@ var textRet = 0;
 var tomatoSeed;
 var spawnPoint
 var newDialogue = true
+var tomato = true;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,10 +44,11 @@ func _on_interactRange_area_exited(area):
 
 
 func _on_TomatoRange_area_exited(area):
-	if textRet == 3:
+	if textRet == 3 and tomato:
 		frame = 1;
 		var tomatoSpawn = tomatoSeed.instance();
 		get_parent().add_child(tomatoSpawn)
 		tomatoSpawn.set_position(spawnPoint.global_position)
 		print("TomatoTown")
+		tomato = false
 	pass # Replace with function body.

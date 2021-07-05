@@ -59,14 +59,14 @@ slidespeed = 1.0
 slideAmplitudeModifier = 80.0
 
 [node name="Label" type="Label" parent="."]
-margin_left = 25.3674
+margin_left = 23.78
 margin_top = 17.0416
-margin_right = 474.367
+margin_right = 472.78
 margin_bottom = 97.0416
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-text = "Cool Game Title"
+text = "YORNCE"
 __meta__ = {
 "_edit_use_anchors_": false
 }

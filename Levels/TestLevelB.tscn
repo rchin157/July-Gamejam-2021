@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
+[ext_resource path="res://Entities/NPCS/Hoodrat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/NPCS/Newby.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Sprites/NPCS/game2boss.png" type="Texture" id=4]
+[ext_resource path="res://Entities/NPCS/TreeChop.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/NPCS/Treeboi.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/Trees/birch.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/FlyEnemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/sneedshack.tscn" type="PackedScene" id=9]
 
 [node name="Node2D" type="Node2D"]
 
@@ -17,3 +23,26 @@ texture = ExtResource( 4 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -8.916, 0.683609 )
+tutorial = -2
+
+[node name="Hoodrat" parent="." instance=ExtResource( 1 )]
+position = Vector2( 817.63, -7.495 )
+scale = Vector2( 2, 2 )
+
+[node name="tree" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1178.97, -189.495 )
+
+[node name="Newby2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1580.97, 0.505005 )
+
+[node name="tree2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1506, -32 )
+
+[node name="tree3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1785, -35 )
+
+[node name="FlyingEnemy" parent="." instance=ExtResource( 8 )]
+position = Vector2( 155.855, -104.859 )
+
+[node name="shack" parent="." instance=ExtResource( 9 )]
+position = Vector2( 166.837, -189.881 )

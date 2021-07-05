@@ -9,7 +9,7 @@ var animationTree;
 var animationState;
 var animationPlayer;
 var rotate;
-var movespeed = 50;
+var movespeed = 100;
 var velocity = Vector2.ZERO
 var feet;
 var rotateable = true;
@@ -20,6 +20,7 @@ var canTalk = true;
 var talkable = null;
 var previousTalkable = null;
 var talkIcon;
+var demonFilter
 
 var attackD = 10
 var uAttackD = 10
@@ -50,15 +51,28 @@ func _ready():
 	animationPlayer= get_node("AnimationPlayer")
 	animationTree = get_node("AnimationTree")
 	talkIcon = get_node("interact")
+	demonFilter = get_node("DemonMode")
 	rotate = get_node("RotationPivot (Sneed)")
 	animationState = animationTree.get("parameters/playback")
 	feet = get_node("RotationPivot (Sneed)/AnimatedSprite/Feet")
 	vn = get_node("VN")
 	vn.setListener(self)
 	updateHealth();
+	Sound.enableSong(1)
 	tutorial(0);
+	
 	pass # Replace with function body.
 
+func checkEnemyCount():
+	toggleDemon(Sound.enemyCount>0)
+
+func toggleDemon(var state):
+	if state:
+		demonFilter.visible = true;
+		Sound.enableSong(2)
+	else:
+		demonFilter.visible = false;
+		Sound.stopSong(2)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -81,7 +95,7 @@ func _process(delta):
 		if(Input.get_action_strength("ui_focus_next")):
 			feet.play("Sprint")
 			tutorial(3)
-			move_and_slide(input_vector*2*movespeed)
+			move_and_slide(input_vector*5*movespeed)
 		else:
 			tutorial(2)
 			feet.play("Walk")
@@ -90,6 +104,7 @@ func _process(delta):
 		feet.play("Idle")
 	
 	checkAttack();
+	checkEnemyCount()
 	
 	if iFrames>0:
 		iFrames-=1;
@@ -117,6 +132,7 @@ func checkAttack():
 			rotateable = false;
 			if( Input.get_action_strength("ui_up")):
 				animationState.travel("AttackOverhead")
+				Sound.playSFX(4)
 				attack = 4;
 				attackD = oAttackD
 				tutorial(8)
@@ -125,16 +141,19 @@ func checkAttack():
 					if(attackP == 1):
 						animationState.travel("AttackDown")
 						attackD = dAttackD
+						Sound.playSFX(1)
 						attack = 2;
 					else:
 						animationState.travel("AttackStab")
 						attackD = sAttackD
+						Sound.playSFX(2)
 						attack = 3;
 						tutorial(6)
 				else:
 					tutorial(5)
 					animationState.travel("AttackUp")
-					attackD = sAttackD
+					Sound.playSFX(0)
+					attackD = uAttackD
 					attack = 1;
 		holdCount = -1;
 			
@@ -145,7 +164,11 @@ func getAttack():
 	return attackD
 
 func die():
+	get_tree().change_scene("res://Levels/over.tscn")
+	Sound.stopSong(1)
+	Sound.stopSong(2)
 	#Game over goes here
+	
 	return;
 
 func attackStopped(var attackID):
@@ -169,11 +192,16 @@ func holdingAttack():
 		rotateable = false;
 		attackStopped(4)
 		animationState.travel("Idle")
+		Sound.stopSFX(3)
+	else:
+		Sound.playSFX(3)
 	
 func vnEnded():
+	tutorial(9)
 	if previousTalkable != null:
 		tutorial(4)
-		tutorial(9)
+		
+		previousTalkable = null;
 	if talkable != null and not talkable.newDialogue():
 		talkIcon.visible = false;
 	return
@@ -200,6 +228,7 @@ func tutorial(var point):
 		print(point)
 		match point:
 			0: #start
+				Sound.enableSong(0)
 				canTalk = false
 				vn.canFlip = true;
 				vn.startvn("res://StoryText/tutorial1.tres",0)
@@ -229,6 +258,8 @@ func tutorial(var point):
 				vn.canFlip = true;
 			9: #canLeave
 				canTalk = true;
+				Sound.stopSong(0)
+				get_tree().change_scene("res://Levels/mainLevel.tscn")
 		tutorial+=1
 			
 
@@ -247,3 +278,4 @@ func _on_Talk_area_exited(area):
 		vn.close()
 	talkable = null;
 	pass # Replace with function body.
+

@@ -12,7 +12,7 @@ var swooptracker = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	mhealth = 50
+	mhealth = 10
 	health = mhealth
 	attack = 10
 	soulReturn = 50

@@ -97,6 +97,7 @@ func updateCDs():
 		attackCD-=1;
 
 func _on_aggroTrigger_body_entered(body):
+	Sound.enemyCount+=1;
 	print(body.name)
 	if body.name == "Player":
 		print("entered aggro")
@@ -105,6 +106,8 @@ func _on_aggroTrigger_body_entered(body):
 
 
 func _on_aggroLoss_body_exited(body):
+	if Sound.enemyCount>0:
+		Sound.enemyCount-=1;
 	if body.name == "Player" and alive:
 		print("left aggro")
 		player = null
@@ -160,4 +163,6 @@ func _on_bodyArea_area_entered(area):
 
 
 func die():
+	if Sound.enemyCount>0:
+		Sound.enemyCount-=1;
 	queue_free()
